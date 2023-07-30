@@ -1,0 +1,29 @@
+## 1. Using the java files as mentioned in the https://github.com/StarAgileDevOpsTraining/star-agile-banking-finance.git
+## 2. Create EC2 instance and clone the repository after installing git, maven and docker in order to check code is fine or not
+## 3. Create a jar file using the maven -- mvn clean package -- this is gonna create your .jar package
+## 4. Check the .jar package in the target folder and using the path of jar package create the docker file
+
+################## Dockerfile #############################
+# Use a base image with Java
+FROM adoptopenjdk:11-jdk-hotspot
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the Spring Boot JAR file to the container
+COPY /target/banking-0.0.1-SNAPSHOT.jar .
+
+# Expose the default port used by the Spring Boot application
+EXPOSE 8080
+
+# Set the entrypoint command to run the JAR file
+CMD ["java", "-jar", "/app/banking-0.0.1-SNAPSHOT.jar"]
+
+###########################################################
+
+## 5. Build the docker image and run the server using docker build --tag=karan -f Dockerfile .
+## 6. Run the container docker run -d --name=app -p 80:8081 karan
+## 7. Check logs using the docker logs app
+## 8. Check endpoints using the docker inspect app
+## 9. Check server using curl enpointUrl(IP address from inspect):port
+## 10. Access server using PublicIP:Port of server on hosted
