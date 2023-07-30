@@ -23,12 +23,6 @@ pipeline{
                 userRemoteConfigs: [[url: 'https://github.com/StarAgileDevOpsTraining/star-agile-insurance-project.git']]])
             }
         }
-        stage('version check') {
-            steps {
-                sh 'google-chrome --version'
-                sh 'firefox --version'
-            }
-        }
          stage('build') {
             steps {
                 sh 'mvn clean package'
