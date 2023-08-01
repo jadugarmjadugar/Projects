@@ -54,6 +54,7 @@ pipeline{
             steps{
                     sh 'aws --version'
                     sh 'aws sts get-caller-identity'
+                    aws eks update-kubeconfig --region us-east-1 --name test-1
                     //withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: $aws_cred, secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]){
                         //sh 'aws sts get-caller-identity'
                     //}
