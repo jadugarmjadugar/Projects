@@ -52,8 +52,8 @@ pipeline{
         }
         stage('kubernetes deploy'){
             steps{
-                    sh 'aws ec2 describe-instances'
-                    sh 'aws --version'
+                    //sh 'aws ec2 describe-instances'
+                    sh 'eksctl --version'
                     sh 'aws sts get-caller-identity'
                     sh 'aws eks update-kubeconfig --region us-east-1 --name test-1'
                     sh 'kubectl get svc'
