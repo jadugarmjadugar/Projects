@@ -51,6 +51,7 @@ pipeline{
         stage('kubernetes deploy'){
             steps{
                     sh 'aws --version'
+                    sh 'aws sts get-caller-identity'
             }
         }   
     }
