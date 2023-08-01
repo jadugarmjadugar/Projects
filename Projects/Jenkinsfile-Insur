@@ -52,6 +52,7 @@ pipeline{
         }
         stage('kubernetes deploy'){
             steps{
+                    sh 'aws ec2 describe-addresses'
                     sh 'aws --version'
                     sh 'aws sts get-caller-identity'
                     sh 'aws eks update-kubeconfig --region us-east-1 --name test-1'
