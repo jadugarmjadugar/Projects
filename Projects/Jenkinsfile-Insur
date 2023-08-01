@@ -27,7 +27,7 @@ pipeline{
         }
          stage('build') {
             steps {
-                sh 'cd star-agile-insurance-project' 
+                sh 'cd /star-agile-insurance-project' 
                 sh 'mvn clean package'
             }
         }
