@@ -45,7 +45,9 @@ pipeline{
         stage('ecr push'){
             steps{
                 sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 831202177837.dkr.ecr.us-east-1.amazonaws.com'
-                sh 'docker build -t test-jenkins .'
+                sh 'docker build -t test-jenkins:$BUILD_NUMBER .'
+                sh 'docker tag test-jenkins:$BUILD_NUMBER 831202177837.dkr.ecr.us-east-1.amazonaws.com/test-jenkins:$BUILD_NUMBER'
+                sh 'docker push 831202177837.dkr.ecr.us-east-1.amazonaws.com/test-jenkins:$BUILD_NUMBER'
                 sh 'docker tag test-jenkins:latest 831202177837.dkr.ecr.us-east-1.amazonaws.com/test-jenkins:latest'
                 sh 'docker push 831202177837.dkr.ecr.us-east-1.amazonaws.com/test-jenkins:latest'
             }
