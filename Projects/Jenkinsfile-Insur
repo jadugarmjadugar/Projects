@@ -8,6 +8,8 @@ pipeline{
     }
     environment{
         dockerhub_cred = credentials('dockerhub-cred')
+        aws_cred = credentials('aws-ID')
+
     }
     stages{
         stage('Cleanup') {
@@ -52,7 +54,7 @@ pipeline{
             steps{
                     //sh 'aws --version'
                     //sh 'aws sts get-caller-identity'
-                    withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]){
+                    withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: $aws_cred, secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]){
                         sh 'aws sts get-caller-identity'
                     }
             }
