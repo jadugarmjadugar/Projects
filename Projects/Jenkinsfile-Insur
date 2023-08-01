@@ -8,7 +8,7 @@ pipeline{
     }
     environment{
         dockerhub_cred = credentials('dockerhub-cred')
-        aws_cred = credentials('aws-ID')
+        //aws_cred = credentials('aws-ID')
 
     }
     stages{
@@ -52,11 +52,11 @@ pipeline{
         }
         stage('kubernetes deploy'){
             steps{
-                    //sh 'aws --version'
-                    //sh 'aws sts get-caller-identity'
-                    withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: $aws_cred, secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]){
-                        sh 'aws sts get-caller-identity'
-                    }
+                    sh 'aws --version'
+                    sh 'aws sts get-caller-identity'
+                    //withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: $aws_cred, secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]){
+                        //sh 'aws sts get-caller-identity'
+                    //}
             }
         }   
     }
