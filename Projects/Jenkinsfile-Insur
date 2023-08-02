@@ -20,14 +20,13 @@ pipeline{
         stage('Checkout stage'){
             steps{
                 checkout([$class: 'GitSCM',
-                branches: [[name: 'new']],  
+                branches: [[name: 'master']],  
                 extensions: [[$class: 'CleanCheckout']],
-                userRemoteConfigs: [[url: 'https://github.com/jadugarmjadugar/Projects.git']]])
+                userRemoteConfigs: [[url: 'https://github.com/StarAgileDevOpsTraining/star-agile-insurance-project.git']]])
             }
         }
          stage('build') {
             steps {
-                sh 'cd star-agile-insurance-project/' 
                 sh 'mvn clean package'
             }
         }
