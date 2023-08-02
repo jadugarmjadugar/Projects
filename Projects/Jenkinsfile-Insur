@@ -63,7 +63,7 @@ pipeline{
                             //sh ('aws eks update-kubeconfig --name <EKS_CLUSTER_NAME> --region <AWS_REGION>')
                             sh 'aws sts get-caller-identity'
                             sh 'kubectl get svc'
-                            sh 'kubectl run insuranceproject-pod --image=jadugarmjadugar/insuranceproject:1.0'
+                            //sh 'kubectl run insuranceproject-pod --image=jadugarmjadugar/insuranceproject:1.0'
                             sh 'kubectl get pods'    
                 }
             }
